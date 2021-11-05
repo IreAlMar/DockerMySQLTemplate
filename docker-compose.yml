@@ -1,29 +1,20 @@
-version: "3"
-
+version: '3.3'
 services:
-  postgres:
-    image: postgres:12.3-alpine
+  db:
+    image: mysql:latest
     restart: always
     environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-    volumes:
-      - postgres:/var/lib/postgresql/data
-
-  pgadmin:
-    #Check if version can be replaced with 6.1
-    image: dpage/pgadmin4:4.23
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
-      PGADMIN_DEFAULT_PASSWORD: password
-      PGADMIN_LISTEN_PORT: 80
+      #try out with it
+      #MYSQL_DATABASE: test
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
     ports:
-      - 15432:80
+      - 3306:3306
+    expose:
+      - 3306
     volumes:
-      - pgadmin:/var/lib/pgadmin
-    depends_on:
-      - postgres
-
-volumes:
-  postgres:
-  pgadmin:
+      #By removing this line the data from the database is not persisted
+      #- /tmp/mydb:/var/lib/mysql
+      #Scripts here only executed when the database starts for the first time
+      - /home/imarti/Documents/rubicon/dataModel/DockerDataModel/scrips:/docker-entrypoint-initdb.d
