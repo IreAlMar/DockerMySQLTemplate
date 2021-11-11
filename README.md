@@ -24,20 +24,4 @@
   * ``RUN`` is an image build step, the state of the container after a RUN command will be committed to the container image. A Dockerfile can have many RUN steps that layer on top of one another to build the image.
   * ``CMD`` is the command the container executes by default when you launch the built image. A Dockerfile will only use the final ``CMD` defined. The ``CMD`` can be overridden when starting a container with
 
-TODO csvsql -i mysql csvData/NES_AssetStatus_UTF8__c.csv -v -e csv encoding?
 
-## TODO
-
-* Telemetry account exportar csv y sacar el esquema csv y enviar a Roberto
-* Account exportar csv y sacar el esquema csv y enviar a Roberto
-* Limpiar el proyecto documentar
-* API de salesforce
-* Data export mirar si el problema de la codificacion se solución de manera sencilla
-* aplicacion web que me dijo jesus
-* sacar las tablas de la data export o SOAP API
-* Salesforce inspector
-* Preguntar Jesus por objetos compuestos por tablas
-* Preguntar Jesus por __c __r?
-
-
-#eval csvsql -i mysql csvData/NES_AccountTelemetry__c.csv -v > sqlScripts/NES_AccountTelemetry__c.sql
