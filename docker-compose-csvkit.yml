@@ -3,5 +3,5 @@ csvkit:
   # Keep the container up
   #tty: true
   volumes:
-    - /home/imarti/Documents/rubicon/dataModel/DockerDataModel/csvkit/csvData:/usr/src/app/csvData
-    - /home/imarti/Documents/rubicon/dataModel/DockerDataModel/csvkit/sqlScripts:/usr/src/app/sqlScripts
+    - ./csvkit/csvData:/usr/src/app/csvData
+    - ./csvkit/sqlScripts:/usr/src/app/sqlScripts

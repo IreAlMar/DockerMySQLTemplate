@@ -12,6 +12,7 @@ for file in csvData/*;
     fileName="${fileNameWithExtension%.*}"
     echo "File name $fileName"
     eval csvsql -i mysql $file -v > sqlScripts/$fileName.sql
+    cho "Processing $file completed"
 
 done
 
