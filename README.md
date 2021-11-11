@@ -10,10 +10,10 @@
 * ``sudo docker-compose up`` 
   * ``-V, --renew-anon-volumes: Recreate anonymous volumes instead of retrieving data from the previous containers.``
   * ``--remove-orphans: Remove containers for services not defined in the Compose file``
-  * ``docker-compose --renew-anon-volumes up``
+  * ``docker-compose up --renew-anon-volumes``
 * ``sudo docker-compose down``
   * ``-v, --volumes:  Remove named volumes declared in the `volumes` section of the Compose file and anonymous volumes attached to containers.``
-  * ``docker-compose --volumes down`` / ``docker-compose down -v``
+  * ``docker-compose --volumes down`` / ``sudo docker-compose down --volumes``
 * Remove unused components
   * ``sudo docker volume prune``
   * ``sudo docker container prune``

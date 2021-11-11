@@ -16,6 +16,9 @@ services:
       #By removing this line the data from the database is not persisted
       #- /tmp/mydb:/var/lib/mysql
       #Scripts here only executed when the database starts for the first time
-      - /home/imarti/Documents/rubicon/dataModel/DockerDataModel/scrips/init:/docker-entrypoint-initdb.d
-      - /home/imarti/Documents/rubicon/dataModel/DockerDataModel/scrips/conf:/etc/mysql/conf.d
-      - /home/imarti/Documents/rubicon/dataModel/DockerDataModel/scrips/csvData:/etc/mysql/tmp
+      - ./scrips/init:/docker-entrypoint-initdb.d
+      - ./scrips/conf:/etc/mysql/conf.d
+      - ./scrips/csvData:/etc/mysql/tmp
+      #- /home/imarti/Documents/rubicon/dataModel/DockerDataModel/scrips/init:/docker-entrypoint-initdb.d
+      #- /home/imarti/Documents/rubicon/dataModel/DockerDataModel/scrips/conf:/etc/mysql/conf.d
+      #- /home/imarti/Documents/rubicon/dataModel/DockerDataModel/scrips/csvData:/etc/mysql/tmp
