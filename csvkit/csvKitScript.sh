@@ -5,14 +5,15 @@ echo "################################################"
 
 for file in csvData/*;
   do
-    echo "Processing file: $file"
-    encoding=$(file -bi $file)
-    echo "File encoding: $encoding"
     fileNameWithExtension=$(basename -- "$file")
     fileName="${fileNameWithExtension%.*}"
-    echo "File name $fileName"
-    eval csvsql -i mysql $file -v > sqlScripts/$fileName.sql
-    cho "Processing $file completed"
+    encoding=$(file -bi $file)
+
+    echo "Processing file: $fileNameWithExtension"
+    echo "File encoding: $encoding"
+    eval csvsql -i mysql "$file" -v > sqlScripts/"$fileName".sql
+    echo "Create table script for $fileName.sql created"
+    echo "************************************************************"
 
 done
 

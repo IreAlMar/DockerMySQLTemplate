@@ -1,7 +1,7 @@
 csvkit:
-  image: csvkit-pilot
+  image: csvkit-tool
   # Keep the container up
   #tty: true
   volumes:
-    - ./csvkit/csvData:/usr/src/app/csvData
-    - ./csvkit/sqlScripts:/usr/src/app/sqlScripts
+    - ./csvData:/usr/src/app/csvData
+    - ./sqlScripts:/usr/src/app/sqlScripts

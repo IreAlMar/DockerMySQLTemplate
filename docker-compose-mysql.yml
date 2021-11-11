@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: testRubicon
+      MYSQL_USER: mysql_user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      #Persist data in the database
+      #- /tmp/mydb:/var/lib/mysql
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./csvData:/etc/mysql/tmp
+      #Scripts in this folder are only executed when the database starts for the first time
+      - ./mysql/init:/docker-entrypoint-initdb.d
+
