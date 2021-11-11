@@ -1,0 +1,7 @@
+csvkit:
+  image: csvkit-pilot
+  # Keep the container up
+  #tty: true
+  volumes:
+    - /home/imarti/Documents/rubicon/dataModel/DockerDataModel/csvkit/csvData:/usr/src/app/csvData
+    - /home/imarti/Documents/rubicon/dataModel/DockerDataModel/csvkit/sqlScripts:/usr/src/app/sqlScripts

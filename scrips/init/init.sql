@@ -1,6 +1,6 @@
-USE testRubicon;
+-- USE testRubicon;
 
-SET GLOBAL local_infile='ON';
+-- SET GLOBAL local_infile='ON';
 
 CREATE TABLE AssetStatus(Id VARCHAR(255),IsDeleted VARCHAR(255),Name VARCHAR(255),CurrencyIsoCode VARCHAR(255),CreatedDate VARCHAR(255),CreatedById VARCHAR(255));
 
