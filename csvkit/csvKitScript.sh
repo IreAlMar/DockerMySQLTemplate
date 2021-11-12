@@ -7,7 +7,7 @@ for file in csvData/*;
   do
     fileNameWithExtension=$(basename -- "$file")
     fileName="${fileNameWithExtension%.*}"
-    encoding=$(file -bi $file)
+    encoding=$(file -bi "$file")
 
     echo "Processing file: $fileNameWithExtension"
     echo "File encoding: $encoding"

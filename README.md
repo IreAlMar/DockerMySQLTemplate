@@ -14,13 +14,19 @@ Handy commands
 * Start container 
   * ``-V, --renew-anon-volumes``: Recreate anonymous volumes instead of retrieving data from the previous containers.
   * ``--remove-orphans``: Remove containers for services not defined in the Compose file
-  * ``docker-compose -f docker-compose-mysql.yml up --renew-anon-volumes``
+  * ``docker-compose -f docker-compose-mysql.yml up --renew-anon-volumes --remove-orphans``
 * Stop container
   * ``-v, --volumes`:  Remove named volumes declared in the `volumes` section of the Compose file and anonymous volumes attached to containers.``
   * ``sudo docker-compose -f docker-compose-mysql.yml down --volumes``
 * Remove unused components
   * ``sudo docker volume prune``
   * ``sudo docker container prune``
+
+### Notes
+
+-- USE testRubicon;
+
+-- SET GLOBAL local_infile='ON';
 
 ## csvkit
 
@@ -30,7 +36,7 @@ Handy commands
 
 Handy commands
 
-* ``sudo docker build -t csvkit-pilot .``
+* ``sudo docker build -t csvkit-tool .``
 * ``sudo docker-compose -f docker-compose-csvkit.yml up``
 * ``sudo docker stop dockerdatamodel_csvkit_1``
 * ``sudo docker exec -it dockerdatamodel_csvkit_1 bash``
@@ -46,3 +52,8 @@ Handy commands
 * ``RUN`` vs ``CMD``
   * ``RUN`` is an image build step, the state of the container after a RUN command will be committed to the container image. A Dockerfile can have many RUN steps that layer on top of one another to build the image.
   * ``CMD`` is the command the container executes by default when you launch the built image. A Dockerfile will only use the final ``CMD` defined. The ``CMD`` can be overridden when starting a container with.
+
+
+## TODO
+
+* Solve permission issues with sqlScrips dir
