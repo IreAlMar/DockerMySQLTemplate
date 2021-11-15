@@ -24,7 +24,7 @@ for csvFile in "$csvDir"/*; do
     printf "\nENCLOSED BY '\"'"
     printf "\nLINES TERMINATED BY '\\\n'"
     printf "\nIGNORE 1 LINES"
-    printf "\n(%s);" "$(head -1 "$csvFile" | tr -d '"')"
+    printf "\n(%s);" "$(head -1 "$csvFile" | tr '"' '`')"
   } >>"$infileLoad"
 
   echo "Init script for $infileLoad completed"

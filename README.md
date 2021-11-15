@@ -29,6 +29,8 @@ The MySQL container starts a MySQL DB. Only the first time the container is star
   2. ``mysql -u root -p``
 * Connect to MySQL through host ``sudo mysql -u root -h 0.0.0.0 -p``
 
+MySQL has issues with column names that include dots ``.``, solved it by including back ticks in the infile load data sentence
+
 ### Docker
 
 * Start container 
