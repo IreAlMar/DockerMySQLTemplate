@@ -1,6 +1,28 @@
-# Migration tool
+# DB Migration tool
 
-## MySQL
+## csvkit container
+
+This container uses the [csvkit](https://csvkit.readthedocs.io/en/latest/scripts/csvsql.html#) library to extract the column info from csv files. 
+
+When starting the container Docker will execute ``csvKitScript.sh``. This script reads one by one the files in ``cssvData`` and processes them:
+1. Read the csv file to extract the column names
+2. Infer the data types for each column
+3. Create the sql sentence for the creation of the table
+4. Add the sql sentence for the infile data load
+
+### Docker
+
+Instructions to operate with the container:
+
+1. Build the container image: ``sudo docker build -t csvkit-tool .``
+2. Start the container: ``sudo docker-compose -f docker-compose-csvkit.yml up``
+3. Stop container: ``sudo docker stop dockerdatamodel_csvkit_1``
+4. Access a bash console inside the container: ``sudo docker exec -it dockerdatamodel_csvkit_1 bash``
+
+
+## MySQL container
+
+The MySQL container starts a MySQL DB. Only the first time the container is started will it execute the init scripts in the ``infileLoadScripts`` directory.
 
 * Connect to MySQL through container
   1. ``sudo docker exec -it dockerdatamodel_db_1 bash``
@@ -8,8 +30,6 @@
 * Connect to MySQL through host ``sudo mysql -u root -h 0.0.0.0 -p``
 
 ### Docker
-
-Handy commands
 
 * Start container 
   * ``-V, --renew-anon-volumes``: Recreate anonymous volumes instead of retrieving data from the previous containers.
@@ -22,38 +42,14 @@ Handy commands
   * ``sudo docker volume prune``
   * ``sudo docker container prune``
 
-### Notes
+## Notes
 
--- USE testRubicon;
+* -- USE testRubicon; -> the MySQL container creates and operates over the ``testRubicon`` DB as it is configured in the environment of the docker-compose file.
 
--- SET GLOBAL local_infile='ON';
+* -- SET GLOBAL local_infile='ON'; -> set in the custom config file.
 
-## csvkit
+* sql_mode="" -> MySQL does not have built-in Boolean type. By default, MySQL BOOLEAN data type is an integer, zero is considered as false, and non-zero value is considered as true. Override the config file to let it accept non integer values as boolean.
 
-[csvkit](https://csvkit.readthedocs.io/en/latest/scripts/csvsql.html#)
-
-### Docker
-
-Handy commands
-
-* ``sudo docker build -t csvkit-tool .``
-* ``sudo docker-compose -f docker-compose-csvkit.yml up``
-* ``sudo docker stop dockerdatamodel_csvkit_1``
-* ``sudo docker exec -it dockerdatamodel_csvkit_1 bash``
-
-## Other info
-
-### Useful commands
-
-* ``head -1 file.csv | tr -d '"'``
-
-### Dockerfile
-
-* ``RUN`` vs ``CMD``
-  * ``RUN`` is an image build step, the state of the container after a RUN command will be committed to the container image. A Dockerfile can have many RUN steps that layer on top of one another to build the image.
-  * ``CMD`` is the command the container executes by default when you launch the built image. A Dockerfile will only use the final ``CMD` defined. The ``CMD`` can be overridden when starting a container with.
-
-
-## TODO
-
-* Solve permission issues with sqlScrips dir
+* ``RUN`` vs ``CMD`` in Dockerfile
+  * ``RUN`` is an image build step, the state of the container after a ``RUN`` command will be committed to the container image. A Dockerfile can have many ``RUN`` steps that layer on top of one another to build the image.
+  * ``CMD`` is the command the container executes by default when you launch the built image. A Dockerfile will only use the final ``CMD`` defined. 

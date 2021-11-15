@@ -18,7 +18,8 @@ services:
       - ./mysql/conf:/etc/mysql/conf.d
       - ./csvData:/etc/mysql/tmp/csvData
       - ./sqlScripts:/etc/mysql/tmp/sqlScripts
-      - ./infileLoadScripts:/etc/mysql/tmp/infileLoadScripts
+      #- ./infileLoadScripts:/etc/mysql/tmp/infileLoadScripts
       #Scripts in this folder are only executed when the database starts for the first time
-      - ./mysql/init:/docker-entrypoint-initdb.d
+      #- ./mysql/init:/docker-entrypoint-initdb.d
+      - ./infileLoadScripts:/docker-entrypoint-initdb.d
 

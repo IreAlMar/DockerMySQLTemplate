@@ -1,3 +1,4 @@
 [mysqld]
 local_infile=1
 secure-file-priv=/etc/mysql/tmp/
+sql_mode=""
