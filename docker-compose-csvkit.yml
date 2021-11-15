@@ -4,5 +4,4 @@ csvkit:
   #tty: true
   volumes:
     - ./csvData:/usr/src/app/csvData
-    - ./sqlScripts:/usr/src/app/sqlScripts
     - ./infileLoadScripts:/usr/src/app/infileLoadScripts
